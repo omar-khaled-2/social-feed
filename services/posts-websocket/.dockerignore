@@ -1,0 +1,16 @@
+# Ignore Go build artifacts
+bin/
+*.exe
+*.out
+
+
+vendor/
+
+# Ignore editor files
+*.swp
+*.tmp
+.idea/
+.vscode/
+
+# Ignore environment files
+.env

@@ -1,0 +1,9 @@
+[package]
+name = "jwt-generator"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+jsonwebtoken = "8"   # for JWT
+serde = { version = "1.0", features = ["derive"] } # for serializing/deserializing JSON
+chrono = "0.4" # optional, for exp/iat timestamps

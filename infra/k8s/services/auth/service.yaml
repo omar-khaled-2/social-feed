@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth
+  namespace: social-feed
+spec:
+  selector:
+    app: auth
+  type: ClusterIP
+  sessionAffinity: None
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+  - name: auth
+    protocol: TCP
+    port: 5000
+    targetPort: 5000

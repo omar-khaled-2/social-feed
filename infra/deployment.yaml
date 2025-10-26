@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  test
+  namespace: default
+  labels:
+    app:  test
+spec:
+  selector:
+    matchLabels:
+      app: test
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  test
+    spec:
+      initContainers:
+        - name: jwt-generator
+          image: alsetouhy/service-jwt-generator
+
+          env:
+            - name: SERVICE_NAME
+              value: hello
+            - name: OUTPUT_PATH
+              value: /token/token.jwt
+          envFrom:
+            - secretRef:
+                name: jwt-secret
+          volumeMounts:
+            - name: token
+              mountPath: /token
+      containers:
+
+      volumes:
+        - name: token
+          emptyDir: {}
